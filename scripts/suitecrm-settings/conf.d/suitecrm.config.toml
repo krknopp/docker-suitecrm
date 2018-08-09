@@ -1,0 +1,4 @@
+[template]
+src = "suite.config.tmpl"
+dest = "/root/apache_docroot/config.php"
+mode = "0644"
