@@ -1,5 +1,5 @@
 FROM php:7-apache
-MAINTAINER Kerry Knopp <kerry@codekoalas.com>
+MAINTAINER Kerry Knopp <krknopp@gmail.com>
 
 RUN apt-get update && apt-get install -y \
         libfreetype6-dev \
@@ -20,7 +20,7 @@ RUN apt-get update && apt-get install -y \
         git \
 	mysql-client \
 	ssmtp \
-        && apt-get clean
+        && apt-get clean && a2enmod rewrite
 
 RUN docker-php-ext-install -j$(nproc) iconv \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
@@ -39,7 +39,7 @@ RUN docker-php-ext-install -j$(nproc) iconv \
         imap
 
 # Install Confd
-ADD https://github.com/kelseyhightower/confd/releases/download/v0.13.0/confd-0.13.0-linux-amd64 /usr/local/bin/confd
+ADD https://github.com/kelseyhightower/confd/releases/download/v0.16.0/confd-0.16.0-linux-amd64 /usr/local/bin/confd
 RUN chmod +x /usr/local/bin/confd
 
 # Add Custom PHP and Apache configs
