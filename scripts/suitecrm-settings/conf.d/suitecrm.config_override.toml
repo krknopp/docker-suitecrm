@@ -1,4 +1,4 @@
 [template]
-src = "suite.config_override.tmpl"
+src = "suitecrm.config_override.tmpl"
 dest = "/root/apache_docroot/config_override.php"
 mode = "0644"
